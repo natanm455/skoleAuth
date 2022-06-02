@@ -1,0 +1,89 @@
+body {
+  background-color: #0F4C75;
+  color: #ffffff;
+}
+.card-body {
+  background-color: #0F4C75;
+}
+.display-3 {
+  position: relative;
+  bottom: 114px;
+}
+.jumbotron{
+  background-color: #0F4C75;
+}
+
+.Mainlinje {
+  background-color: white;
+}
+
+.centered {
+    padding-top: 200px;
+    text-align: center;
+}
+
+.secret-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  background-color: #000;
+}
+
+.btn-logout { 
+  background-color: #0F4C75;
+  color: rgb(255, 255, 255);
+  margin-left: 15px;
+}
+
+.headerH1 {
+  position: relative;
+  left: 20%;
+  margin-top: 55px;
+  display: inline-block;
+}
+
+.headerH3 {
+  position: relative;
+  left: 20%;
+  margin-top: 55px;
+  display: inline-block;
+  color: #fff;
+}
+
+.para {
+  position: relative;
+  left: 30%;
+  background-color: #1B262C;
+  padding: 35px;
+  width: 800px;
+  border-radius: 5px;
+  display: block;
+  margin: 40px 20px 20px 30px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.listLeft {
+  display: inline-block;
+  margin-right: 45px;
+}
+
+.listRight {
+  display: inline-block;
+}
+
+.footer-copyright {
+  margin: 35px;
+}
+
+.syntax{
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+} 
+
+.Logo {
+  display: block;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(152deg) brightness(105%) contrast(105%);
+  margin: auto;
+  margin: 65px auto 0px auto;
+}
