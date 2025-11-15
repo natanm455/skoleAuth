@@ -271,9 +271,78 @@
         padding: 28px 16px 22px;
       }
     }
+  
+    /* ===== NAVBAR ===== */
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      backdrop-filter: blur(12px);
+      background: rgba(2, 6, 23, 0.65);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 12px 0;
+      box-shadow: 0 8px 25px rgba(15,23,42,0.6);
+    }
+
+    .nav-inner {
+      max-width: 1050px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(37, 99, 235, 0.25);
+      color: var(--text-main);
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+    }
+
+    header {
+      margin-top: 70px; /* space for navbar */
+    }
+
   </style>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">NM</div>
+      <ul class="nav-links">
+        <li><a href="#">Hjem</a></li>
+        <li><a href="#">CV</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <header>
     <h1>Nathan Mulubrhan</h1>
     <p>966 78 042 · Nathan@scompute.no</p>
@@ -294,4 +363,53 @@
       <div class="job">
         <div class="job-title">Lærling, IT-Driftsfaget – Advania</div>
         <div>August 2022 – August 2024 · Lier</div>
-      </div
+      </div>
+      <div class="job">
+        <div class="job-title">Butikkmedarbeider – Meny Trekanten</div>
+        <div>August 2021 – Oktober 2022 · Asker</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Utdanning</h2>
+      <p>Bleiker videregående skole<br>Data/IT<br>August 2020 – Juni 2022</p>
+    </div>
+
+    <div class="section">
+      <h2>Språk</h2>
+      <ul>
+        <li>Norsk – Morsmål</li>
+        <li>Engelsk – God</li>
+      </ul>
+    </div>
+
+    <div id="controls">
+      <button id="toggleBtn">Skjul innhold</button>
+    </div>
+
+  </div>
+
+  <footer>
+    Laget basert på CV-innhold
+  </footer>
+
+  <script>
+    const btn = document.getElementById('toggleBtn');
+    let visible = true;
+
+    function updateLabel() {
+      btn.textContent = visible ? 'Skjul innhold' : 'Vis innhold';
+    }
+
+    updateLabel();
+
+    btn.addEventListener('click', () => {
+      visible = !visible;
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.style.display = visible ? 'block' : 'none';
+      });
+      updateLabel();
+    });
+  </script>
+</body>
+</html>
