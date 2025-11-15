@@ -1,244 +1,297 @@
 <!DOCTYPE html>
 <html lang="no">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="CV – Nathan Mulubrhan" />
-    <meta name="author" content="Nathan Mulubrhan" />
-    <title>Nathan Mulubrhan – CV</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nathan Mulubrhan – CV</title>
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-elevated: #020617;
+      --card: #020617;
+      --accent: #1d4ed8;
+      --accent-soft: rgba(37, 99, 235, 0.35);
+      --text-main: #e5eeff;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+    }
 
-  <body>
-    <div class="d-flex flex-column min-vh-100">
-      <!-- Navbar -->
-      <nav
-        class="navbar navbar-expand-lg navbar-dark bg-dark navZindex navHome shadow-lg p-3"
-      >
-        <div class="container px-6">
-          <a href="/">
-            <img src="IMG/logo.svg" alt="Logo" style="width: 200px" />
-          </a>
+    * {
+      box-sizing: border-box;
+    }
 
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, #1d4ed8 0, transparent 55%),
+        radial-gradient(circle at bottom right, #0ea5e9 0, transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
 
-          <div
-            class="collapse navbar-collapse justify-content-end"
-            id="navbarSupportedContent"
-          >
-            <ul class="navbar-nav d-flex justify-content-evenly">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Hjem</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/register">Registrer deg</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#cv">CV</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#kontakt">Kontakt</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 20px 30px;
+      text-align: center;
+      background: radial-gradient(circle at top, #1d4ed8, #020617 55%);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.9);
+    }
 
-      <!-- Header / Hero -->
-      <header class="bg-dark py-5">
-        <div class="container px-5">
-          <div class="row gx-5 justify-content-center">
-            <div class="col-lg-8">
-              <div class="text-center my-5">
-                <h1 class="display-4 fw-bolder text-white mb-3">
-                  Nathan Mulubrhan
-                </h1>
-                <p class="lead text-white-50 mb-3">
-                  IT-konsulent hos Advania, med fagbrev innen IT-driftsfaget og
-                  erfaring fra både support, drift og kundekontakt.
-                </p>
-                <p class="text-white-50 mb-4">
-                  Basert i Lier / Asker · fokus på praktiske løsninger, god
-                  kommunikasjon og stabil drift.
-                </p>
-                <div
-                  class="d-grid gap-3 d-sm-flex justify-content-sm-center mt-4"
-                >
-                  <a
-                    class="btn btn-primary btn-lg px-4 me-sm-3"
-                    href="#cv"
-                    style="z-index: 2"
-                  >
-                    Se erfaring
-                  </a>
-                  <a
-                    class="btn btn-outline-light btn-lg px-4"
-                    href="#kontakt"
-                    style="z-index: 2"
-                  >
-                    Kontakt meg
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0, rgba(59, 130, 246, 0.4), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
 
-      <!-- CV / Innhold – beholder area2 for animasjon/styling -->
-      <section class="py-5 border-bottom area2" id="cv">
-        <div class="container px-5 my-4">
-          <div class="row gx-5">
-            <!-- Erfaring -->
-            <div class="col-lg-7 mb-5">
-              <h2 class="h4 fw-bolder text-white mb-4">
-                <i class="bi bi-briefcase-fill me-2"></i> Erfaring
-              </h2>
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
 
-              <div class="mb-4">
-                <h3 class="h5 text-white mb-1">
-                  IT-Konsulent – Advania
-                </h3>
-                <p class="text-white-50 mb-1">
-                  August 2024 – nå · Lier
-                </p>
-                <p class="text-white-50 small mb-0">
-                  Arbeider med IT-drift og support for kunder, feilsøking,
-                  brukerstøtte og vedlikehold av løsninger.
-                </p>
-              </div>
+    h1 {
+      margin: 0 0 0.4rem;
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      letter-spacing: 0.04em;
+      text-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+      animation: float-in 700ms ease-out;
+    }
 
-              <div class="mb-4">
-                <h3 class="h5 text-white mb-1">
-                  Lærling, IT-Driftsfaget – Advania
-                </h3>
-                <p class="text-white-50 mb-1">
-                  August 2022 – August 2024 · Lier
-                </p>
-                <p class="text-white-50 small mb-0">
-                  Toårig lærlingeløp innen IT-drift, brukerstøtte og
-                  infrastruktur. Varierte oppgaver innen daglig drift og
-                  problemløsing.
-                </p>
-              </div>
+    header p {
+      margin: 0.2rem 0 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
 
-              <div class="mb-4">
-                <h3 class="h5 text-white mb-1">
-                  Støttekontakt – Asker kommune
-                </h3>
-                <p class="text-white-50 mb-1">
-                  Januar 2024 – September 2024 · Asker
-                </p>
-                <p class="text-white-50 small mb-0">
-                  Støtte og oppfølging av bruker på fritid – ansvar, tillit og
-                  struktur i hverdagen.
-                </p>
-              </div>
+    .tagline {
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+      color: #c7d2fe;
+    }
 
-              <div class="mb-4">
-                <h3 class="h5 text-white mb-1">
-                  Butikkmedarbeider – Meny Trekanten
-                </h3>
-                <p class="text-white-50 mb-1">
-                  August 2021 – Oktober 2022 · Asker
-                </p>
-                <p class="text-white-50 small mb-0">
-                  Kundeservice, varepåfylling og generelt butikkarbeid.
-                </p>
-              </div>
-            </div>
+    .pill-row {
+      margin-top: 1.1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
 
-            <!-- Utdanning + språk -->
-            <div class="col-lg-5 mb-5">
-              <h2 class="h4 fw-bolder text-white mb-4">
-                <i class="bi bi-mortarboard-fill me-2"></i> Utdanning
-              </h2>
-              <div class="mb-4">
-                <h3 class="h6 text-white mb-1">
-                  Bleiker videregående skole – Data/IT
-                </h3>
-                <p class="text-white-50 mb-1">
-                  August 2020 – Juni 2022
-                </p>
-                <p class="text-white-50 small mb-0">
-                  Videregående utdanning innen data og IT, som grunnlag for
-                  videre lærlingeløp i IT-driftsfaget.
-                </p>
-              </div>
+    .pill {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(191, 219, 254, 0.5);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(15, 23, 42, 0.9));
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.7), 0 12px 35px rgba(15, 23, 42, 0.9);
+    }
 
-              <h2 class="h5 fw-bolder text-white mb-3">
-                <i class="bi bi-translate me-2"></i> Språk
-              </h2>
-              <ul class="list-unstyled text-white-50 mb-4">
-                <li class="mb-2">Norsk – Morsmål</li>
-                <li class="mb-2">Engelsk – God</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+    .container {
+      max-width: 960px;
+      width: 100%;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+      flex: 1;
+    }
 
-      <!-- Kontakt -->
-      <section class="py-5 bg-dark" id="kontakt">
-        <div class="container px-5">
-          <div class="row gx-5 justify-content-center">
-            <div class="col-lg-6">
-              <div class="text-center">
-                <h2 class="h4 fw-bolder text-white mb-3">
-                  <i class="bi bi-envelope-fill me-2"></i> Kontakt
-                </h2>
-                <p class="text-white-50 mb-3">
-                  Ta gjerne kontakt for spørsmål, muligheter eller en prat.
-                </p>
-                <p class="text-white mb-1">
-                  <i class="bi bi-telephone me-2"></i> 966 78 042
-                </p>
-                <p class="text-white mb-0">
-                  <i class="bi bi-at me-2"></i> Nathan@scompute.no
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    .glass-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.97));
+      border-radius: 18px;
+      padding: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 1);
+      backdrop-filter: blur(18px);
+    }
 
-      <!-- Footer -->
-      <footer class="bg-black text-center py-4 mt-auto">
-        <div class="container px-5">
-          <p class="m-0 text-white-50">
-            &copy; <%= new Date().getFullYear() %> Nathan Mulubrhan
-          </p>
-        </div>
-      </footer>
-    </div>
+    h2 {
+      margin: 0 0 1rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #a5b4fc;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-  </body>
-</html>
+    h2::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #1d4ed8, transparent);
+    }
+
+    .section {
+      margin-bottom: 26px;
+      padding: 18px 18px 16px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.15), transparent 55%),
+                  rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(30, 64, 175, 0.7);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+      transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 160ms ease-out;
+    }
+
+    .section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 55%);
+      opacity: 0;
+      transition: opacity 180ms ease-out;
+      pointer-events: none;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+      border-color: rgba(96, 165, 250, 0.9);
+      box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 1);
+    }
+
+    .section:hover::after {
+      opacity: 1;
+    }
+
+    .job {
+      margin-bottom: 14px;
+      padding-left: 10px;
+      border-left: 2px solid rgba(55, 65, 81, 0.8);
+    }
+
+    .job:last-child {
+      margin-bottom: 4px;
+    }
+
+    .job-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: #e5e7eb;
+    }
+
+    .job small {
+      display: block;
+      font-size: 0.78rem;
+      margin-top: 2px;
+      color: var(--text-muted);
+    }
+
+    .section p,
+    .section li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 0.2rem 0 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 16px 26px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    #controls {
+      margin-top: 18px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #toggleBtn {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.9);
+      background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.3), rgba(15, 23, 42, 1));
+      color: #e5e7eb;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 1);
+      transition: transform 120ms ease-out, box-shadow 120ms ease-out, border-color 120ms ease-out, background 120ms ease-out;
+    }
+
+    #toggleBtn::before {
+      content: "◆";
+      font-size: 0.55rem;
+      opacity: 0.85;
+    }
+
+    #toggleBtn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 1);
+      border-color: rgba(191, 219, 254, 1);
+      background: radial-gradient(circle at top left, rgba(191, 219, 254, 0.35), rgba(15, 23, 42, 1));
+    }
+
+    @keyframes float-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .glass-card {
+        padding: 18px 16px 18px;
+      }
+
+      .section {
+        padding: 14px 12px 12px;
+      }
+
+      header {
+        padding: 28px 16px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nathan Mulubrhan</h1>
+    <p>966 78 042 · Nathan@scompute.no</p>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <h2>Erfaring</h2>
+      <div class="job">
+        <div class="job-title">IT-Konsulent – Advania</div>
+        <div>August 2024 – nå · Lier</div>
+      </div>
+      <div class="job">
+        <div class="job-title">Støttekontakt – Asker Kommune</div>
+        <div>Januar 2024 – September 2024 · Asker</div>
+      </div>
+      <div class="job">
+        <div class="job-title">Lærling, IT-Driftsfaget – Advania</div>
+        <div>August 2022 – August 2024 · Lier</div>
+      </div
