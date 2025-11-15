@@ -1,153 +1,244 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="no" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>A U T H</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <title>Login – Passport JS</title>
+
+  <!-- Font Awesome (ikoner) -->
+  <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+
+  <!-- Bootstrap 5 (samme versjon som vi brukte på home) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+  <!-- Dine eksisterende CSS-filer (hvis du bruker dem andre steder) -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/bgk.css">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #1d4ed8;
+      --text-main: #e5eeff;
+      --text-muted: #9ca3af;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, #1d4ed8 0, transparent 55%),
+        radial-gradient(circle at bottom right, #0ea5e9 0, transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR – samme stil som på ny home-side */
+    .nav-blur {
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.88) !important;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .navbar-brand {
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: var(--text-main) !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-muted) !important;
+      font-size: 0.9rem;
+      padding-inline: 0.75rem;
+      border-radius: 10px;
+      transition: 0.18s ease;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--text-main) !important;
+      background: rgba(37, 99, 235, 0.25);
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-logout {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.2), rgba(15, 23, 42, 1));
+      color: var(--text-main) !important;
+      font-size: 0.85rem;
+      padding: 0.35rem 1.1rem;
+      transition: 0.18s ease;
+    }
+
+    .btn-logout:hover {
+      border-color: rgba(191, 219, 254, 1);
+      background: radial-gradient(circle at top left, rgba(191, 219, 254, 0.25), rgba(15, 23, 42, 1));
+      box-shadow: 0 0 18px rgba(59, 130, 246, 0.65);
+    }
+
+    .navbar-toggler {
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+    .navbar-toggler-icon {
+      filter: invert(0.9);
+    }
+
+    /* LOGIN-SEKSJON */
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 16px 40px; /* 90px for å gi plass til navbar */
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 18px;
+      padding: 28px 24px 26px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 1);
+      backdrop-filter: blur(18px);
+    }
+
+    .login-card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    .login-card p.subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-label {
+      color: var(--text-main);
+    }
+
+    .form-control {
+      background-color: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-main);
+    }
+
+    .form-control:focus {
+      background-color: #020617;
+      color: var(--text-main);
+      border-color: rgba(59, 130, 246, 0.9);
+      box-shadow: 0 0 0 0.15rem rgba(37, 99, 235, 0.45);
+    }
+
+    .modernButton {
+      border-radius: 999px;
+      padding-inline: 2.5rem;
+      background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+      border: none;
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.6);
+      transition: 0.18s ease;
+    }
+
+    .modernButton:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(37, 99, 235, 0.8);
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px 12px 22px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
 
 <body>
-  <section class="vh-100 " style="background-color: #f8f9fa; z-index: 1;">
-<div id="scrollbar">
-  
 
-  <div style=" box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"> 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navZindex navHome shadow-lg p-3">
-      <div class="container px-6">
-        <a href="/"> <img src="IMG/logo.svg" alt="" style="width: 200px;"> </a>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark nav-blur">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="/">Passport JS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="container">
-            <ul class="navbar-nav d-flex justify-content-evenly">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Hjem</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/register">Registrer deg</a>
-              </li>
-              <li class="nav-item active"><a class="nav-link" href="/login">Login</a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/#KontaktOss">Kontakt oss</a>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="#!">Om</a>
-              </li>
-            </li>
-
-            </ul>
-          </div>
-        </div>
+      <div class="justify-content-end collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Hjem</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Registrer deg</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/login">Login</a>
+          </li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a class="btn btn-logout" href="/logout" role="button">Logg ut</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-  
+    </div>
+  </nav>
+
+  <!-- LOGIN-INNHOLD -->
+  <div class="login-wrapper">
+
+    <div class="login-card">
+      <h2><i class="fas fa-user-lock me-2"></i>Logg inn</h2>
+      <p class="subtitle">Logg inn med brukeren din for å se beskyttet innhold.</p>
+
+      <form action="/login" method="POST">
+
+        <div class="mb-3">
+          <label class="form-label" for="email">
+            <i class="fas fa-envelope me-2"></i>Email
+          </label>
+          <input type="email" class="form-control" id="email" name="username" required>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label" for="password">
+            <i class="fas fa-lock me-2"></i>Passord
+          </label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary btn-lg modernButton">
+            Login
+          </button>
+        </div>
+
+      </form>
+    </div>
+
   </div>
 
-
-
-  <img class=" img-fluid" src="IMG/blured2.jpg" id="blured">
-
-
-
-
-
-
-
-<div class="form" style="height: 310px;">
-
-    <form action="/login" method="POST" class="mx-1 mx-md-4">
-
-      
-
-      <div class="d-flex flex-row align-items-center mb-4">
-        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-        <div class="form-outline flex-fill mb-0">
-          <input type="email" class="form-control" name="username">
-        <label class="form-label" for="email">Email</label>
-        </div>
-      </div>
-
-
-
-
-    <div class="d-flex flex-row align-items-center mb-4">
-      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-      <div class="form-outline flex-fill mb-0">
-        <div class="form-group">
-          <input type="password" class="form-control" name="password">
-          <label for="password">Passord</label>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-      <button type="submit" class="btn btn-primary btn-lg modernButton" style="background-color: #0F4C75; border-color: #0F4C75;">Login</button>
-    </div>
-  
-  
-  </form></div>
-</section>
-
-<div class="footer-dark footPlaced">
-  
-  <footer class="footerWhtieLine">
-      <div class="container">
-          <div class="row">
-              <div class="col-sm-6 col-md-3 item">
-                  <h3>Services</h3>
-                  <ul>
-                      <li><a href="#">Web design</a></li>
-                      <li><a href="#">Development</a></li>
-                      <li><a href="#">Hosting</a></li>
-                  </ul>
-              </div>
-              <div class="col-sm-6 col-md-3 item">
-                  <h3>About</h3>
-                  <ul>
-                      <li><a href="#">Company</a></li>
-                      <li><a href="#">Team</a></li>
-                      <li><a href="#">Careers</a></li>
-                  </ul>
-              </div>
-              <div class="col-md-6 item text">
-                  <h3>Company Name</h3>
-                  <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
-      </div>
-       <footer class="py-5 bg-grey">
-        <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; FinnArbeidere 2022</p></div>
-    </footer> 
+  <footer>
+    &copy; <%= new Date().getFullYear() %> Passport JS – Innlogging
   </footer>
-</div>
-</div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
