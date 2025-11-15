@@ -43,7 +43,7 @@ app.use(passport.session());
 
 /////////////// Koble opp mot databasen ///////////////
 
-mongoose.connect(`mongodb+srv://natanm455:natan123@cluster0.w5wza.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+mongoose.connect('mongodb://admin:Banan3232@192.168.0.14:27017/skoleAuth?authSource=admin')
 
 /////////////// Passport strategi ///////////////
 
