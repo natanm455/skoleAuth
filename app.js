@@ -84,9 +84,21 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
-app.get("/innhold", (req, res) => {
+
+
+
+
+app.get("/loggedInn", (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("innhold");
+    res.render("loggedInn");
+  } else {
+    res.redirect("/loggedInn");
+  }
+});
+
+app.get("/cv", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render("cv");
   } else {
     res.redirect("/login");
   }
@@ -105,7 +117,7 @@ app.post("/register", (req, res) => {
         res.redirect("register");
       } else {
         passport.authenticate("local")(req, res, () => {
-          res.redirect("/innhold");
+          res.redirect("/loggedinn");
         });
       }
     }
@@ -128,7 +140,7 @@ app.post("/login", (req, res, next) => {
       passport.authenticate("local", {
         failureMessage: true,
         failureRedirect: "/login",
-        successRedirect: "/innhold",
+        successRedirect: "/loggedInn",
       })(req, res, next);
     }
   });
